@@ -38,7 +38,7 @@ composer require 'arokettu/rfc1751'
 
 ## Documentation
 
-Read full documentation here: <https://sandfox.dev/php/rfc1751.html
+Read full documentation here: <https://sandfox.dev/php/rfc1751.html>
 
 ## Support
 

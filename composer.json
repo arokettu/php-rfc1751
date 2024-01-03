@@ -1,5 +1,23 @@
 {
     "name": "arokettu/rfc1751",
+    "type": "library",
+    "description": "RFC 1751 Encoder/Decoder",
+    "license": "MIT",
+    "keywords": ["rfc 1751", "s/key", "encoding", "human-readable"],
+    "homepage": "https://sandfox.dev/php/rfc1751.html",
+    "authors": [
+        {
+            "name": "Anton Smirnov",
+            "role": "developer",
+            "homepage": "https://sandfox.me/",
+            "email": "sandfox@sandfox.me"
+        }
+    ],
+    "support": {
+        "issues": "https://gitlab.com/sandfox/php-rfc1751/-/issues",
+        "source": "https://gitlab.com/sandfox/php-rfc1751",
+        "chat": "https://gitter.im/arokettu/community"
+    },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
