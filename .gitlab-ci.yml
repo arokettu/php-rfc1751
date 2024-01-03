@@ -25,7 +25,7 @@ cache:
     # cache dependencies
     - composer config -g cache-dir "$(pwd)/.composer-cache"
   script:
-    - composer remove vimeo/psalm
+    - composer remove --dev vimeo/psalm
     - composer update
     - vendor/bin/phpunit
 
@@ -51,7 +51,7 @@ coverage:
     - master
   image: php:8.1
   script:
-    - composer remove vimeo/psalm
+    - composer remove --dev vimeo/psalm
     - composer update
     - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover coverage.xml
     - bash <(curl -s https://codecov.io/bash)
