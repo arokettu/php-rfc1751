@@ -3,7 +3,7 @@
     "type": "library",
     "description": "RFC 1751 Encoder/Decoder",
     "license": "MIT",
-    "keywords": ["rfc 1751", "s/key", "encoding", "human-readable"],
+    "keywords": ["rfc 1751", "s-key", "encoding", "human-readable"],
     "homepage": "https://sandfox.dev/php/rfc1751.html",
     "authors": [
         {
