@@ -40,7 +40,7 @@ class RfcTest extends TestCase
         ];
 
         foreach ($cases as $hex => $words) {
-            $hexOutput = strtolower(str_replace(' ', '', $hex));;
+            $hexOutput = strtolower(str_replace(' ', '', $hex));
 
             self::assertEquals($hexOutput, bin2hex(Rfc1751::decode($words)));
         }
