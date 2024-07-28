@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Arokettu\Rfc1751;
 
+use UnexpectedValueException;
+
 final class Rfc1751
 {
     public const DICT = [
@@ -274,7 +276,7 @@ final class Rfc1751
         }));
 
         if (\count($words) % 6 !== 0) {
-            throw new \RuntimeException('Words count must be divisible by 6');
+            throw new UnexpectedValueException('Words count must be divisible by 6');
         }
 
         $wordValues = array_flip(self::DICT);
@@ -282,17 +284,17 @@ final class Rfc1751
 
         for ($i = 0; $i < \count($words); $i += 6) {
             $word1 = $wordValues[strtoupper($words[$i])] ?? null;
-            if ($word1 === null) { throw new \RuntimeException("Unrecognized word: " . $words[$i]); }
+            if ($word1 === null) { throw new UnexpectedValueException("Unrecognized word: " . $words[$i]); }
             $word2 = $wordValues[strtoupper($words[$i + 1])] ?? null;
-            if ($word2 === null) { throw new \RuntimeException("Unrecognized word: " . $words[$i + 1]); }
+            if ($word2 === null) { throw new UnexpectedValueException("Unrecognized word: " . $words[$i + 1]); }
             $word3 = $wordValues[strtoupper($words[$i + 2])] ?? null;
-            if ($word3 === null) { throw new \RuntimeException("Unrecognized word: " . $words[$i + 2]); }
+            if ($word3 === null) { throw new UnexpectedValueException("Unrecognized word: " . $words[$i + 2]); }
             $word4 = $wordValues[strtoupper($words[$i + 3])] ?? null;
-            if ($word4 === null) { throw new \RuntimeException("Unrecognized word: " . $words[$i + 3]); }
+            if ($word4 === null) { throw new UnexpectedValueException("Unrecognized word: " . $words[$i + 3]); }
             $word5 = $wordValues[strtoupper($words[$i + 4])] ?? null;
-            if ($word5 === null) { throw new \RuntimeException("Unrecognized word: " . $words[$i + 4]); }
+            if ($word5 === null) { throw new UnexpectedValueException("Unrecognized word: " . $words[$i + 4]); }
             $word6 = $wordValues[strtoupper($words[$i + 5])] ?? null;
-            if ($word6 === null) { throw new \RuntimeException("Unrecognized word: " . $words[$i + 5]); }
+            if ($word6 === null) { throw new UnexpectedValueException("Unrecognized word: " . $words[$i + 5]); }
 
             $byte1 = $word1 >> 3;
             $byte2 = ($word1 << 5 | $word2 >> 6) & 0xff;
@@ -316,7 +318,7 @@ final class Rfc1751
             $parityCalc &= 0b11;
 
             if ($parityDecoded !== $parityCalc) {
-                throw new \RuntimeException('Parity bits do not match');
+                throw new UnexpectedValueException('Parity bits do not match');
             }
 
             $decoded .=
