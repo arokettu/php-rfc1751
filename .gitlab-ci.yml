@@ -14,7 +14,7 @@ cache:
     # install system packages
     - apt-get update && apt-get install -y git unzip
     # install extensions
-    - if [ "$INSTALL_XDEBUG" -eq 1 ]; then curl --location https://github.com/FriendsOfPHP/pickle/releases/latest/download/pickle.phar --output pickle.phar; php pickle.phar install --defaults xdebug; docker-php-ext-enable xdebug; fi
+    - if [ "$INSTALL_COVERAGE" -eq 1 ]; then pecl install pcov; docker-php-ext-enable pcov; fi
     # install composer
     - php -r "copy('https://composer.github.io/installer.sig', '/tmp/composer.sig');"
     - php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
@@ -37,14 +37,14 @@ test:
   parallel:
     matrix:
       - PHP_VERSION:
-          - '7.1' # lowest version
+          - '7.2' # lowest testable version
           - '7'   # latest 7
           - '8'   # latest 8
 
 # coverage
 coverage:
   variables:
-    INSTALL_XDEBUG: 1
+    INSTALL_COVERAGE: 1
   extends: .test
   stage: report
   only:
